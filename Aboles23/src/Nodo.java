@@ -57,7 +57,9 @@ public class Nodo<E> implements Comparable{
     }
 
     public int buscar(E dato) {
-        return hijos.indexOf(dato);
+        if (datos.contains(dato))
+            return datos.indexOf(dato);
+        return -1;
     }
 
     public int insertar(E dato) {
@@ -82,7 +84,7 @@ public class Nodo<E> implements Comparable{
         System.out.prinltn("/");
     }
 
-    public int compareTo(E dato) {
+    public int compareTo(Object o) {
         
 
         return 0;
