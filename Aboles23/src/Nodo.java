@@ -1,5 +1,6 @@
 
 import java.util.ArrayList;
+import java.util.Vector;
 
 /*
  *  Universidad del Valle de Guatemala
@@ -8,13 +9,14 @@ import java.util.ArrayList;
  *  David Ytzen Hsieh Lo #08225
  */
 
-public class Nodo<E> implements Comparable{
+public class Nodo<E>{
 
     final int LIMITE = 2;
-    ArrayList<E> datos = new ArrayList<E>(LIMITE);
+    Vector<Elemento<E>> datos = new Vector<Elemento<E>>(LIMITE);
     ArrayList<Nodo> hijos = new ArrayList<Nodo>(LIMITE+1);
     int cantidad;
     Nodo padre;
+
 
 
     public void nuevoHijo(int index, Nodo hijo) {
@@ -24,8 +26,11 @@ public class Nodo<E> implements Comparable{
     }
 
     public Nodo quitarHijo(int index) {
-        Nodo temp = hijos.get(index);
-        hijos.set(index, null);
+        
+        //Nodo temp = hijos.get(index);
+        Nodo temp = null;
+        if(index < hijos.size() )
+            temp = hijos.remove(index);
         return temp;
     }
 
@@ -43,10 +48,15 @@ public class Nodo<E> implements Comparable{
     }
 
     public int getCantidad() {
-        return cantidad;
+        //return cantidad;
+        return datos.size();
     }
 
-    public E getDato(int index) {
+    public int getCantidadHijos() {
+        return hijos.size();
+    }
+
+    public Elemento getDato(int index) {
         return datos.get(index);
     }
 
@@ -56,23 +66,41 @@ public class Nodo<E> implements Comparable{
         return false;
     }
 
-    public int buscar(E dato) {
-        if (datos.contains(dato))
-            return datos.indexOf(dato);
+    public int buscar(Elemento elemento) {
+        if (datos.contains(elemento))
+            return datos.indexOf(elemento);
         return -1;
     }
 
-    public int insertar(E dato) {
+    public int insertar(Elemento nuevo) {
+
+        Elemento actual;
         cantidad ++;
 
-        if(!datos.isEmpty()) {
-            if(datos.get(0) )
+        if(!datos.isEmpty())
+        for(int i=datos.size(); i>=0; i--) {
+            if(datos.size() <= i)
+                continue;
+            else {
+                actual =  datos.get(i);
+                if(nuevo.compareTo(actual)< 0)
+                    datos.add(i+1,datos.get(i));
+                else {
+                    datos.add(i+1, nuevo);
+                    return i+1;
+                }
+
+            }
         }
+
+        datos.add(nuevo);
+        return 0;
     }
 
-    public E remover() {
-        E temp = datos.get(cantidad - 1);
-        datos.set(cantidad-1, null);
+    public Elemento remover() {
+        //Elemento temp = datos.get(cantidad - 1);
+        //datos.set(cantidad-1, null);
+        Elemento temp = datos.remove(cantidad-1);
         cantidad --;
         return temp;
     }
@@ -81,13 +109,9 @@ public class Nodo<E> implements Comparable{
     {
         for(int i =0; i<cantidad; i++)
             datos.get(i).despliegar();
-        System.out.prinltn("/");
+        System.out.println("/");
     }
 
-    public int compareTo(Object o) {
-        
 
-        return 0;
-    }
 
 }
