@@ -17,5 +17,5 @@ public interface InterfazConjunto<E> {
     
     public Conjunto interseccion(Conjunto B);
 
-    public E[] mostrar();
+    public void mostrar();
 }

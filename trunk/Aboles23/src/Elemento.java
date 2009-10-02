@@ -1,4 +1,4 @@
-
+    
 public class Elemento<E> implements Comparable {
 
     private E dato;
@@ -8,7 +8,7 @@ public class Elemento<E> implements Comparable {
     }
 
     public void despliegar() {
-        System.out.println(dato);
+        System.out.print(dato+ " ");
     }
 
     public E getDato() {
@@ -20,8 +20,11 @@ public class Elemento<E> implements Comparable {
     }
 
     public int compareTo(Object o) {
-        return ((String)dato).compareTo(((Elemento)(o)).toString()) ;
+        if(o != null)
+            return ((String)dato).compareTo((String)((Elemento)(o)).getDato());
+        return -1;
     }
+    
 
     //public String toString() {
      //   return (String)dato;
