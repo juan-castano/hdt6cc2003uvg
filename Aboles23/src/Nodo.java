@@ -1,13 +1,13 @@
 
-import java.util.ArrayList;
-import java.util.Vector;
-
 /*
  *  Universidad del Valle de Guatemala
  *  Algoritmos y Estructura de Datos - CC2003
  *  Hoja de Trabajo #6 - Implementación de Árboles 2-3
  *  David Ytzen Hsieh Lo #08225
  */
+import java.util.ArrayList;
+import java.util.Vector;
+
 
 public class Nodo<E>{
 

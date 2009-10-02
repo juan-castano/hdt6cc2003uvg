@@ -35,55 +35,27 @@ public class Arbol23<E> {
 
     public Elemento buscar(int limite, Nodo raiz) {
         if(raiz != null) {
-            buscar(limite,(Nodo) raiz.hijos.get(0));
+            elem =buscar(limite,(Nodo) raiz.hijos.get(0));
             if(raiz.getDato(0) != null) {
                 elem = raiz.getDato(0);
                 cont++;
                 if(limite == cont)
                     return elem;
             }
-            buscar(limite, (Nodo) raiz.hijos.get(1));
+            elem =buscar(limite, (Nodo) raiz.hijos.get(1));
             if(raiz.getDato(1) != null) {
                 elem = raiz.getDato(1);
                 cont++;
                 if(limite == cont)
                     return elem;
             }
-            buscar(limite, (Nodo) raiz.hijos.get(2));
-
+            elem =buscar(limite, (Nodo) raiz.hijos.get(2));
+            
         }
-        return elem;
+        return null;
             
 
-        /*int hijo;
-        int cont = 0;
-        Elemento elemento = null;
-        Nodo actual = raiz;
-        while(cont < index) {
-            for(int i=0; i<actual.getCantidad(); i++) {                
-                elemento = actual.getDato(i);
-                cont ++;
-            }
-            actual = sigHijo(actual, elemento);
-        }
-        return elemento;
 
-        System.out.print("nivel="+nivel+ " hijo="+hijo+" ");
-        nodo.despliegar();
-
-        int cantidad = nodo.getCantidad();
-
-        for(int i = 0; i < cantidad+1; i++) {
-            Nodo sigNodo = nodo.getHijo(i);
-            if(sigNodo != null) {
-                recorrer(sigNodo, nivel+1, i);
-            }
-            else {
-                return;
-            }
-
-        }
-         */
     }
 
     
